@@ -1,7 +1,8 @@
 import pygame
 
-
 """定义一个飞船类型"""
+
+
 class Ship:
     """管理飞船的类"""
 
@@ -27,9 +28,9 @@ class Ship:
 
     def updata(self):
         """根据飞船的移动标志来调整位置"""
-        if self.moving_left:
+        if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed
-        if self.moving_right:
+        if self.moving_right and self.rect.right<self.screen_rect.right:
             self.x += self.settings.ship_speed
 
         # 根据self.x更新rect对象
