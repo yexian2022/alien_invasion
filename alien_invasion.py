@@ -35,9 +35,13 @@ class AlienInvasion:
             elif enent.type == pygame.KEYDOWN:
                 if enent.key == pygame.K_RIGHT:
                     self.ship.moving_right = True
+                elif enent.key == pygame.K_LEFT:
+                    self.ship.moving_left = True
             elif enent.type == pygame.KEYUP:
                 if enent.key == pygame.K_RIGHT:
                     self.ship.moving_right = False
+                elif enent.key == pygame.K_LEFT:
+                    self.ship.moving_left = False
 
     def _update_screen(self):
         """每次循环时颜色重置"""
