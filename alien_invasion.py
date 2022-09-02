@@ -32,16 +32,25 @@ class AlienInvasion:
             if enent.type == pygame.QUIT:
                 sys.exit()
             elif enent.type == pygame.KEYDOWN:
-                if enent.key == pygame.K_RIGHT:
-                    self.ship.moving_right = True
-                elif enent.key == pygame.K_LEFT:
-                    self.ship.moving_left = True
+                self._check_keydown_enents(enent)
             elif enent.type == pygame.KEYUP:
-                if enent.key == pygame.K_RIGHT:
-                    self.ship.moving_right = False
-                elif enent.key == pygame.K_LEFT:
-                    self.ship.moving_left = False
+                self._check_keyup_enents(enent)
 
+    def _check_keydown_enents(self,enent):
+        """响应按键"""
+        if enent.key == pygame.K_RIGHT:
+            self.ship.moving_right = True
+        elif enent.key == pygame.K_LEFT:
+            self.ship.moving_left = True
+        elif enent.key==pygame.K_q:
+            sys.exit()
+
+    def _check_keyup_enents(self,enent):
+        """响应松开"""
+        if enent.key == pygame.K_RIGHT:
+            self.ship.moving_right = False
+        elif enent.key == pygame.K_LEFT:
+            self.ship.moving_left = False
     def _update_screen(self):
         """每次循环时颜色重置"""
         self.screen.fill(self.settings.bg_color)
