@@ -1,6 +1,7 @@
 import pygame
 
 
+"""定义一个飞船类型"""
 class Ship:
     """管理飞船的类"""
 
