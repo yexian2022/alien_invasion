@@ -26,13 +26,7 @@ class AlienInvasion:
         while True:
             self._check_enents()
             self.ship.updata()
-            self.bullets.update()
-
-            # 删除消失的子弹
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-            print(len(self.bullets))
+            self._update_bullets()
             self._update_screen()
 
     def _check_enents(self):
@@ -62,6 +56,16 @@ class AlienInvasion:
             self.ship.moving_right = False
         elif enent.key == pygame.K_LEFT:
             self.ship.moving_left = False
+
+    def _update_bullets(self):
+        """更新子弹的位置并删除消失的子弹"""
+        # 更新子弹的位置
+        self.bullets.update()
+        # 删除消失的子弹
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+        print(len(self.bullets))
 
     def _update_screen(self):
         """每次循环时颜色重置"""
